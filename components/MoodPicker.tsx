@@ -21,9 +21,8 @@ export const MoodPicker: React.FC<MoodPickerProps> = ({ handleSelectMood }) => {
       <Text style={styles.title}>How are you right now?</Text>
       <View style={styles.moods}>
         {moodOptions.map(mood => (
-          <View>
+          <View key={mood.emoji}>
             <Pressable
-              key={mood.emoji}
               onPress={() => setSelectedMood(mood)}
               style={[
                 styles.moodButton,
@@ -47,10 +46,16 @@ export const MoodPicker: React.FC<MoodPickerProps> = ({ handleSelectMood }) => {
 const styles = StyleSheet.create({
   container: {
     borderColor: theme.colorPurple,
-    borderWidth: 2,
+    backgroundColor: 'white',
+    borderWidth: 1,
     borderRadius: 8,
     alignItems: 'center',
     padding: 8,
+    marginBottom: 8,
+    shadowColor: theme.colorPurple,
+    shadowOffset: { width: 0, height: 1 },
+    shadowRadius: 2,
+    shadowOpacity: 0.5,
   },
   title: {
     marginVertical: 8,

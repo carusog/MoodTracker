@@ -2,6 +2,8 @@ import React, { FC, useCallback, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { MoodPicker } from '../../components/MoodPicker';
 import { MoodOptionType, MoodOptionWithTimestamp } from '../types';
+import { format } from 'date-fns';
+import { MoodItemRow } from '../../components/MoodItemRow';
 
 export const Home: FC = () => {
   const [moodList, setMoodList] = useState<MoodOptionWithTimestamp[]>([]);
@@ -16,9 +18,7 @@ export const Home: FC = () => {
       <MoodPicker handleSelectMood={handleSelectMood} />
       <View>
         {moodList.map(item => (
-          <Text key={item.timestamp}>
-            {item.mood.emoji} - {new Date(item.timestamp).toLocaleString()}
-          </Text>
+          <MoodItemRow item={item} key={item.timestamp} />
         ))}
       </View>
     </View>
@@ -27,7 +27,6 @@ export const Home: FC = () => {
 
 const styles = StyleSheet.create({
   screen: {
-    backgroundColor: 'white',
     flex: 1,
     justifyContent: 'center',
     padding: 8,
