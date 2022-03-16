@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Pressable } from 'react-native';
-
 import { MoodOptionType } from '../src/types';
+import { theme } from '../src/theme';
 
 export const MoodPicker: React.FC = () => {
   const [selectedMood, setSelectedMood] = useState<MoodOptionType>();
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
   moodText: {
     fontSize: 10,
     textAlign: 'center',
-    color: '#454C73',
+    color: theme.colorPurple,
     fontWeight: 'bold',
   },
   moodButton: {
@@ -50,8 +50,8 @@ const styles = StyleSheet.create({
     borderRadius: 9999,
   },
   moodButtonSelected: {
-    backgroundColor: '#454C73',
-    borderColor: 'white',
+    backgroundColor: theme.colorPurple,
+    borderColor: theme.colorWhite,
     borderWidth: 2,
   },
 });
